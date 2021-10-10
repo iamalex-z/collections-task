@@ -19,18 +19,12 @@ public class Range<T> implements Set<T> {
                 range.add((T)i);
             }
         }
-        if(arg1.getClass() == Float.class && arg2.getClass() == Float.class){
+        else if(arg1.getClass() == Float.class && arg2.getClass() == Float.class){
             for(Float i = (Float) arg1; i <= (Float) arg2; i+=0.1f){
                 range.add((T)i);
             }
         }
-    }
-
-
-    public Range(T arg1, T arg2, Function<T, T> function){
-        range = new HashSet<>();
-
-        if(arg1.getClass() == Character.class && arg2.getClass() == Character.class){
+        else if(arg1.getClass() == Character.class && arg2.getClass() == Character.class){
             for(Character i = (Character) arg1; i <= (Character) arg2; i++){
                 range.add((T)i);
             }
@@ -94,6 +88,6 @@ public class Range<T> implements Set<T> {
     }
 
     public static <T extends Character> Range<T> of(T arg1, T arg2, Function<T, T> function){
-        return new Range<>(arg1, arg2, function);
+        return new Range<>(arg1, arg2);
     }
 }
